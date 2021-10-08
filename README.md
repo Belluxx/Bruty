@@ -8,12 +8,14 @@ Basic bruteforce dictionary generator written in C++
 
 ## Build
 Fastest way to build the project:
-1. Download the source code zip
+1. Download the [source code zip](https://github.com/Belluxx/Bruty/archive/refs/heads/main.zip)
 2. Extract the source code
-3. Open the extracted folder in a terminal
-4. Run the command `cmake -DCMAKE_BUILD_TYPE=Release`
-5. Run the command `make`
-6. Run the compiled binary with `./Bruty`
+3. Open the extracted folder in a terminal and run the following commands
+4. `mkdir Release`
+5. `cd Release`
+6. `cmake .. -DCMAKE_BUILD_TYPE=Release`
+7. `make`
+8. Run the compiled binary with `./Bruty`
 
 ## Usage
 Usage: `bruty charset length [-f out_file]`
