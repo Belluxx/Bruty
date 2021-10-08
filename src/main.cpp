@@ -1,3 +1,11 @@
+/**
+ * Pietro Bellodi 2021
+ *
+ * Basic bruteforce dictionary command-line generator written in C++
+ *
+ * TODO: Allow min-max password length range
+ */
+
 #include <iostream>
 #include <cmath>
 #include <fstream>
