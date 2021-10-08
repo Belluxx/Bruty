@@ -6,6 +6,15 @@ Basic bruteforce dictionary generator written in C++
 - Write to file or print or to stdout
 - Show progress in real time
 
+## Build
+Fastest way to build the project:
+1. Download the source code zip
+2. Extract the source code
+3. Open the extracted folder in a terminal
+4. Run the command `cmake -DCMAKE_BUILD_TYPE=Release`
+5. Run the command `make`
+6. Run the compiled binary with `./Bruty`
+
 ## Usage
 Usage: `bruty charset length [-f out_file]`
 - **charset**: the code of the charset that will be used to compose the passwords
