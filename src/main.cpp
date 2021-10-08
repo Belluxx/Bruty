@@ -91,12 +91,12 @@ void show_info() {
 
 void show_help() {
     clog << "Usage: bruty charset length [-f out_file]" << endl;
-    clog << "\t- charset: the set of characters that composes the passwords\n"
-            "\t\t0: Barebone ->   lowercase letters\n"
-            "\t\t1: Minimal  ->   lowercase letters and digits\n"
-            "\t\t2: Basic    ->   lowercase and uppercase letters\n"
-            "\t\t3: Normal   ->   lowercase and uppercase letters and digits\n"
-            "\t\t4: Big      ->   lowercase and uppercase letters, digits and symbols\n";
+    clog << "\t- charset: the number of the charset that will be used to compose the passwords\n"
+            "\t\t0: lowercase letters\n"
+            "\t\t1: lowercase letters and digits\n"
+            "\t\t2: lowercase and uppercase letters\n"
+            "\t\t3: lowercase and uppercase letters and digits\n"
+            "\t\t4: lowercase and uppercase letters, digits and symbols\n";
     clog << "\t- length: the length of the password\n";
     clog << "\t- out_file: the name of the file where passwords will be written\n";
     exit(1);
