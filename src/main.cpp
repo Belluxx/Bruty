@@ -11,22 +11,22 @@ static const char BAREBONE_CHARSET[BAREBONE_CHARSET_SIZE] =   {'a','b','c','d','
 
 static const int MINIMAL_CHARSET_SIZE = 36;
 static const char MINIMAL_CHARSET[MINIMAL_CHARSET_SIZE] =     {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',
-                                                         '0','1','2','3','4','5','6','7','8','9'};
+                                                               '0','1','2','3','4','5','6','7','8','9'};
 
 static const int BASIC_CHARSET_SIZE = 52;
 static const char BASIC_CHARSET[BASIC_CHARSET_SIZE] =         {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',
-                                                         'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
+                                                               'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
 
 static const int NORMAL_CHARSET_SIZE = 62;
 static const char NORMAL_CHARSET[NORMAL_CHARSET_SIZE] =       {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',
-                                                         'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',
-                                                         '0','1','2','3','4','5','6','7','8','9'};
+                                                               'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',
+                                                               '0','1','2','3','4','5','6','7','8','9'};
 
 static const int BIG_CHARSET_SIZE = 70;
 static const char BIG_CHARSET[BIG_CHARSET_SIZE] =             {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',
-                                                         'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',
-                                                         '0','1','2','3','4','5','6','7','8','9',
-                                                         '!','#','-','_','$','%','&','*'};
+                                                               'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',
+                                                               '0','1','2','3','4','5','6','7','8','9',
+                                                               '!','#','-','_','$','%','&','*'};
 
 void show_help();
 void show_info();
