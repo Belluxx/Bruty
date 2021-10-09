@@ -56,7 +56,7 @@ void generate_dict(const char* charset, int charset_size, int pass_size) {
 
     const bigint field_size = pow(charset_size, pass_size) - 1;
     const bigint progress_step = field_size / 1000;
-    std::clog << "Attempts needed: " << field_size << std::endl;
+    fprintf(stderr, "Dictionary words: %llu\n", field_size + 1);
     printf("%s\n", pass);
     for (bigint i = 0; i < field_size; i++) {
         next_pass(pass, pass_size, charset, charset_size);
@@ -67,7 +67,7 @@ void generate_dict(const char* charset, int charset_size, int pass_size) {
             fflush(stderr);
         }
     }
-    std::clog << std::endl;
+    fprintf(stderr, "\n");
 }
 
 static void next_pass(char* pass, int pass_size, const char* charset, int charset_size) {
