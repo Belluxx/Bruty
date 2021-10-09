@@ -38,6 +38,7 @@ void generate_dict(const char* charset, int charset_size, int pass_size, const s
     std::cout << std::endl;
 
     f.close();
+    free(pass);
 }
 
 /**
