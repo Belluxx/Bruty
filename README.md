@@ -27,3 +27,11 @@ Usage: `bruty charset length [-f out_file]`
   - **Big**      (code `4`): lowercase and uppercase letters, digits and symbols
 - **length**: the length of the password
 - **out_file**: the name of the file where passwords will be written
+
+## Performance
+Tests performed on a Macbook Air M1
+- `bruty 0 6 > out.txt`: 12.6 seconds
+- `bruty 0 6 -f out.txt`: 20.8 seconds
+- `crunch 6 6 abcdefghijklmnopqrstuvwxyz > out.txt`: 30.0 seconds
+
+So bruty appears to be around 2.4x faster than crunch (in output redirect mode).
