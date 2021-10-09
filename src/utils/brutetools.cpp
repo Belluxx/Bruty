@@ -57,14 +57,14 @@ void generate_dict(const char* charset, int charset_size, int pass_size) {
     const bigint field_size = pow(charset_size, pass_size) - 1;
     const bigint progress_step = field_size / 1000;
     std::clog << "Attempts needed: " << field_size << std::endl;
-    std::cout << pass << std::endl;
+    printf("%s\n", pass);
     for (bigint i = 0; i < field_size; i++) {
         next_pass(pass, pass_size, charset, charset_size);
-        std::cout << pass << std::endl;
+        printf("%s\n", pass);
         if (i % progress_step == 0) {
             float progress = ((float) i / (float) field_size) * 100.0f;
-            std::clog << "\rProgress: " << (float) ((int) (progress * 10.0)) / 10.0 << "%";
-            std::clog.flush();
+            fprintf(stderr, "\rProgress: %.1f%%", progress);
+            fflush(stderr);
         }
     }
     std::clog << std::endl;
