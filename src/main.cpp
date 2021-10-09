@@ -63,28 +63,28 @@ int main(int argc, char const *argv[]) {
 
     switch (mode) {
         case 0:
-            if (fwrite_enabled) bruteforce_singlethread(BAREBONE_CHARSET, BAREBONE_CHARSET_SIZE, pass_size, fname);
-            else bruteforce_singlethread(BAREBONE_CHARSET, BAREBONE_CHARSET_SIZE, pass_size);
+            if (fwrite_enabled) generate_dict(BAREBONE_CHARSET, BAREBONE_CHARSET_SIZE, pass_size, fname);
+            else generate_dict(BAREBONE_CHARSET, BAREBONE_CHARSET_SIZE, pass_size);
             break;
 
         case 1:
-            if (fwrite_enabled) bruteforce_singlethread(MINIMAL_CHARSET, MINIMAL_CHARSET_SIZE, pass_size, fname);
-            else bruteforce_singlethread(MINIMAL_CHARSET, MINIMAL_CHARSET_SIZE, pass_size);
+            if (fwrite_enabled) generate_dict(MINIMAL_CHARSET, MINIMAL_CHARSET_SIZE, pass_size, fname);
+            else generate_dict(MINIMAL_CHARSET, MINIMAL_CHARSET_SIZE, pass_size);
             break;
 
         case 2:
-            if (fwrite_enabled) bruteforce_singlethread(BASIC_CHARSET, BASIC_CHARSET_SIZE, pass_size, fname);
-            else bruteforce_singlethread(BASIC_CHARSET, BASIC_CHARSET_SIZE, pass_size);
+            if (fwrite_enabled) generate_dict(BASIC_CHARSET, BASIC_CHARSET_SIZE, pass_size, fname);
+            else generate_dict(BASIC_CHARSET, BASIC_CHARSET_SIZE, pass_size);
             break;
 
         case 3:
-            if (fwrite_enabled) bruteforce_singlethread(NORMAL_CHARSET, NORMAL_CHARSET_SIZE, pass_size, fname);
-            else bruteforce_singlethread(NORMAL_CHARSET, NORMAL_CHARSET_SIZE, pass_size);
+            if (fwrite_enabled) generate_dict(NORMAL_CHARSET, NORMAL_CHARSET_SIZE, pass_size, fname);
+            else generate_dict(NORMAL_CHARSET, NORMAL_CHARSET_SIZE, pass_size);
             break;
 
         case 4:
-            if (fwrite_enabled) bruteforce_singlethread(BIG_CHARSET, BIG_CHARSET_SIZE, pass_size, fname);
-            else bruteforce_singlethread(BIG_CHARSET, BIG_CHARSET_SIZE, pass_size);
+            if (fwrite_enabled) generate_dict(BIG_CHARSET, BIG_CHARSET_SIZE, pass_size, fname);
+            else generate_dict(BIG_CHARSET, BIG_CHARSET_SIZE, pass_size);
             break;
 
         default:

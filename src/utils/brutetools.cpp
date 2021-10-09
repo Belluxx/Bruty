@@ -17,7 +17,7 @@ using namespace std;
  * @param fname The name of the file where the dictionary will be
  * written
  */
-void bruteforce_singlethread(const char* charset, int charset_size, int pass_size, const string& fname) {
+void generate_dict(const char* charset, int charset_size, int pass_size, const string &fname) {
     char* pass = (char*) calloc(pass_size, sizeof(char));
     fill_array(pass, pass_size, charset[0]);
     ofstream f;
@@ -28,7 +28,7 @@ void bruteforce_singlethread(const char* charset, int charset_size, int pass_siz
     cout << "Attempts needed: " << field_size + 1 << endl;
     f << pass << endl;
     for (bigint i = 0; i < field_size; i++) {
-        next_direct(pass, pass_size, charset, charset_size);
+        next_pass(pass, pass_size, charset, charset_size);
         f << pass << endl;
         if (i % progress_step == 0) {
             float progress = ((float) i / (float) field_size) * 100.0f;
@@ -47,7 +47,7 @@ void bruteforce_singlethread(const char* charset, int charset_size, int pass_siz
  * @param charset_size The number of characters in the charset
  * @param pass_size The length of the password
  */
-void bruteforce_singlethread(const char* charset, int charset_size, int pass_size) {
+void generate_dict(const char* charset, int charset_size, int pass_size) {
     char* pass = (char*) calloc(pass_size, sizeof(char));
     fill_array(pass, pass_size, charset[0]);
 
@@ -56,7 +56,7 @@ void bruteforce_singlethread(const char* charset, int charset_size, int pass_siz
     clog << "Attempts needed: " << field_size << endl;
     cout << pass << endl;
     for (bigint i = 0; i < field_size; i++) {
-        next_direct(pass, pass_size, charset, charset_size);
+        next_pass(pass, pass_size, charset, charset_size);
         cout << pass << endl;
         if (i % progress_step == 0) {
             float progress = ((float) i / (float) field_size) * 100.0f;
@@ -67,35 +67,26 @@ void bruteforce_singlethread(const char* charset, int charset_size, int pass_siz
     clog << endl;
 }
 
-static void next_direct(char* pass, int pass_size, const char* charset, int charset_size) {
-    const char c = pass[0];
-    if (is_last(c, charset, charset_size)) {
-        for (int i = 0; i < pass_size; i++) {
-            if (pass[i] == charset[charset_size - 1]) {
-                pass[i] = charset[0];
-            } else {
-                pass[i] = next_char(pass[i], charset, charset_size);
-                break;
-            }
+static void next_pass(char* pass, int pass_size, const char* charset, int charset_size) {
+    for (int i = 0; i < pass_size; i++) {
+        if (pass[i] == charset[charset_size - 1]) {
+            pass[i] = charset[0];
+        } else {
+            pass[i] = next_char(pass[i], charset, charset_size);
+            break;
         }
-    } else {
-        pass[0] = next_char(c, charset, charset_size);
     }
 }
 
 static char next_char(char c, const char* charset, int charset_size) {
-    const int index = ctoi(c, charset, charset_size);
+    const int index = index_of_char(c, charset, charset_size);
     if (index != charset_size - 1)
         return charset[index + 1];
     else
         return charset[0];
 }
 
-static bool is_last(char c, const char* charset, int charset_size) {
-    return c == charset[charset_size - 1];
-}
-
-static int ctoi(char c, const char* charset, int charset_size) {
+static int index_of_char(char c, const char* charset, int charset_size) {
     for (int i = 0; i < charset_size; i++)
         if (charset[i] == c)
             return i;
