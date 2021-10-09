@@ -3,7 +3,7 @@
 #include <string>
 
 // Main functions
-void generate_dict(const char*, int, int, const std::string&);
+void generate_dict(const char*, int, int, const char*);
 void generate_dict(const char*, int, int);
 
 // Low level functions

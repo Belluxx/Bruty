@@ -1,7 +1,8 @@
 #include "brutetools.h"
 #include <iostream>
-#include <cmath>
-#include <fstream>
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
 
 #define NOT_FOUND (-1)
 #define bigint unsigned long long int
@@ -16,28 +17,28 @@
  * @param fname The name of the file where the dictionary will be
  * written
  */
-void generate_dict(const char* charset, int charset_size, int pass_size, const std::string& fname) {
+void generate_dict(const char* charset, int charset_size, int pass_size, const char* fname) {
     char* pass = (char*) calloc(pass_size, sizeof(char));
     fill_array(pass, pass_size, charset[0]);
-    std::ofstream f;
-    f.open(fname);
+    FILE *f;
+    f = fopen(fname, "w");
 
     const bigint field_size = pow(charset_size, pass_size) - 1;
     const bigint progress_step = field_size / 1000;
-    std::cout << "Attempts needed: " << field_size + 1 << std::endl;
-    f << pass << std::endl;
+    printf("Dictionary words: %llu\n", field_size + 1);
+    fprintf(f, "%s\n", pass);
     for (bigint i = 0; i < field_size; i++) {
         next_pass(pass, pass_size, charset, charset_size);
-        f << pass << std::endl;
+        fprintf(f, "%s\n", pass);
         if (i % progress_step == 0) {
             float progress = ((float) i / (float) field_size) * 100.0f;
-            std::cout << "\rProgress: " << (float) ((int) (progress * 10.0)) / 10.0 << "%";
-            std::cout.flush();
+            printf("\rProgress: %.1f%%", progress);
+            fflush(stdout);
         }
     }
-    std::cout << std::endl;
+    printf("\n");
 
-    f.close();
+    fclose(f);
     free(pass);
 }
 

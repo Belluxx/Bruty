@@ -46,7 +46,7 @@ int main(int argc, char const *argv[]) {
 
     const int mode = atoi(argv[1]);
     const int pass_size = atoi(argv[2]);
-    string fname;
+    const char* fname;
     if (argc > 3) {
         if (!strcmp(argv[3], "-f")) {
             if (argc > 4) { fname = argv[4]; fwrite_enabled = true; }
