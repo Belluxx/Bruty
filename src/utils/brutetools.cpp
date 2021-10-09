@@ -2,7 +2,6 @@
 #include <iostream>
 #include <cmath>
 #include <fstream>
-using namespace std;
 
 #define NOT_FOUND (-1)
 #define bigint unsigned long long int
@@ -17,26 +16,28 @@ using namespace std;
  * @param fname The name of the file where the dictionary will be
  * written
  */
-void generate_dict(const char* charset, int charset_size, int pass_size, const string &fname) {
+void generate_dict(const char* charset, int charset_size, int pass_size, const std::string& fname) {
     char* pass = (char*) calloc(pass_size, sizeof(char));
     fill_array(pass, pass_size, charset[0]);
-    ofstream f;
+    std::ofstream f;
     f.open(fname);
 
     const bigint field_size = pow(charset_size, pass_size) - 1;
     const bigint progress_step = field_size / 1000;
-    cout << "Attempts needed: " << field_size + 1 << endl;
-    f << pass << endl;
+    std::cout << "Attempts needed: " << field_size + 1 << std::endl;
+    f << pass << std::endl;
     for (bigint i = 0; i < field_size; i++) {
         next_pass(pass, pass_size, charset, charset_size);
-        f << pass << endl;
+        f << pass << std::endl;
         if (i % progress_step == 0) {
             float progress = ((float) i / (float) field_size) * 100.0f;
-            cout << "\rProgress: " << (float) ((int) (progress * 10.0)) / 10.0 << "%";
-            cout.flush();
+            std::cout << "\rProgress: " << (float) ((int) (progress * 10.0)) / 10.0 << "%";
+            std::cout.flush();
         }
     }
-    cout << endl;
+    std::cout << std::endl;
+
+    f.close();
 }
 
 /**
@@ -53,18 +54,18 @@ void generate_dict(const char* charset, int charset_size, int pass_size) {
 
     const bigint field_size = pow(charset_size, pass_size) - 1;
     const bigint progress_step = field_size / 1000;
-    clog << "Attempts needed: " << field_size << endl;
-    cout << pass << endl;
+    std::clog << "Attempts needed: " << field_size << std::endl;
+    std::cout << pass << std::endl;
     for (bigint i = 0; i < field_size; i++) {
         next_pass(pass, pass_size, charset, charset_size);
-        cout << pass << endl;
+        std::cout << pass << std::endl;
         if (i % progress_step == 0) {
             float progress = ((float) i / (float) field_size) * 100.0f;
-            clog << "\rProgress: " << (float) ((int) (progress * 10.0)) / 10.0 << "%";
-            clog.flush();
+            std::clog << "\rProgress: " << (float) ((int) (progress * 10.0)) / 10.0 << "%";
+            std::clog.flush();
         }
     }
-    clog << endl;
+    std::clog << std::endl;
 }
 
 static void next_pass(char* pass, int pass_size, const char* charset, int charset_size) {
