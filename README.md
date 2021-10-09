@@ -3,7 +3,7 @@ Basic bruteforce dictionary generator written in C++
 
 ## Features
 - Various charsets available
-- Write to file or print or to stdout
+- Write to file or print to stdout
 - Show progress in real time
 
 ## Build
