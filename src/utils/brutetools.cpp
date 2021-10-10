@@ -1,8 +1,7 @@
 #include "brutetools.h"
-#include <iostream>
-#include <stdio.h>
-#include <stdlib.h>
-#include <math.h>
+#include <cstdio>
+#include <cstdlib>
+#include <cmath>
 
 #define NOT_FOUND (-1)
 #define bigint unsigned long long int

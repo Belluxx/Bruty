@@ -1,6 +1,5 @@
 #ifndef BRUTY_BRUTETOOLS_H
 #define BRUTY_BRUTETOOLS_H
-#include <string>
 
 // Main functions
 void generate_dict(const char*, int, int, const char*);
