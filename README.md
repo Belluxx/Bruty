@@ -1,5 +1,5 @@
 # Bruty
-Basic bruteforce dictionary generator written in C++
+Basic bruteforce dictionary generator written in C++, with a focus on maximum efficiency and generation speed.
 
 ## Features
 - Various charsets available
@@ -18,7 +18,7 @@ Fastest way to build the project:
 8. Run the compiled binary with `./Bruty`
 
 ## Usage
-Usage: `bruty charset length [-f out_file]`
+Usage: `bruty charset length [-s]`
 - **charset**: the code of the charset that will be used to compose the passwords
   - **Barebone** (code `0`): lowercase letters
   - **Minimal**  (code `1`): lowercase letters and digits
@@ -26,7 +26,7 @@ Usage: `bruty charset length [-f out_file]`
   - **Normal**   (code `3`): lowercase and uppercase letters and digits
   - **Big**      (code `4`): lowercase and uppercase letters, digits and symbols
 - **length**: the length of the password
-- **out_file**: the name of the file where passwords will be written
+- **-s**: silent mode, do not print progress information
 
 ## Performance
 Tests performed on a Macbook Air M1

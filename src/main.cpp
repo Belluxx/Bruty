@@ -8,7 +8,6 @@
 
 #include <iostream>
 #include <cmath>
-#include <fstream>
 #include "utils/brutetools.h"
 using namespace std;
 
@@ -37,58 +36,52 @@ static const char BIG_CHARSET[BIG_CHARSET_SIZE] =             {'a','b','c','d','
 void show_info();
 void show_help();
 void print_error(const string&, int);
+bool streq(const char*, const char*);
 
-bool fwrite_enabled = false;
+bool silent_mode = false;
 
 int main(int argc, char const *argv[]) {
-    show_info();
     if (argc < 3) show_help();
 
     const int mode = atoi(argv[1]);
     const int pass_size = atoi(argv[2]);
-    const char* fname;
-    if (argc > 3) {
-        if (!strcmp(argv[3], "-f")) {
-            if (argc > 4) { fname = argv[4]; fwrite_enabled = true; }
-            else print_error("Please specify a file", 3);
-        } else print_error("Unknown flag", 2);
-    } else fwrite_enabled = false;
-
-    if (fwrite_enabled) {
-        ofstream f;
-        f.open(fname);
-        if (!f.good()) print_error("Invalid file", 4);
-        f.close();
+    if (argc == 4) {
+        if (streq(argv[3], "-s"))
+            silent_mode = true;
+        else
+            print_error("Unknown flag", 1);
     }
+
+    if (!silent_mode) show_info();
 
     switch (mode) {
         case 0:
-            if (fwrite_enabled) generate_dict(BAREBONE_CHARSET, BAREBONE_CHARSET_SIZE, pass_size, fname);
+            if (silent_mode) generate_dict_silent(BAREBONE_CHARSET, BAREBONE_CHARSET_SIZE, pass_size);
             else generate_dict(BAREBONE_CHARSET, BAREBONE_CHARSET_SIZE, pass_size);
             break;
 
         case 1:
-            if (fwrite_enabled) generate_dict(MINIMAL_CHARSET, MINIMAL_CHARSET_SIZE, pass_size, fname);
+            if (silent_mode) generate_dict_silent(MINIMAL_CHARSET, MINIMAL_CHARSET_SIZE, pass_size);
             else generate_dict(MINIMAL_CHARSET, MINIMAL_CHARSET_SIZE, pass_size);
             break;
 
         case 2:
-            if (fwrite_enabled) generate_dict(BASIC_CHARSET, BASIC_CHARSET_SIZE, pass_size, fname);
+            if (silent_mode) generate_dict_silent(BASIC_CHARSET, BASIC_CHARSET_SIZE, pass_size);
             else generate_dict(BASIC_CHARSET, BASIC_CHARSET_SIZE, pass_size);
             break;
 
         case 3:
-            if (fwrite_enabled) generate_dict(NORMAL_CHARSET, NORMAL_CHARSET_SIZE, pass_size, fname);
+            if (silent_mode) generate_dict_silent(NORMAL_CHARSET, NORMAL_CHARSET_SIZE, pass_size);
             else generate_dict(NORMAL_CHARSET, NORMAL_CHARSET_SIZE, pass_size);
             break;
 
         case 4:
-            if (fwrite_enabled) generate_dict(BIG_CHARSET, BIG_CHARSET_SIZE, pass_size, fname);
+            if (silent_mode) generate_dict_silent(BIG_CHARSET, BIG_CHARSET_SIZE, pass_size);
             else generate_dict(BIG_CHARSET, BIG_CHARSET_SIZE, pass_size);
             break;
 
         default:
-            clog << "Mode not recognized" << endl;
+            print_error("Charset not recognized", 1);
             break;
     }
 }
@@ -98,7 +91,7 @@ void show_info() {
 }
 
 void show_help() {
-    clog << "Usage: bruty charset length [-f out_file]" << endl;
+    clog << "Usage: bruty charset length [-s]" << endl;
     clog << "\t- charset: the number of the charset that will be used to compose the passwords\n"
             "\t\t0: lowercase letters\n"
             "\t\t1: lowercase letters and digits\n"
@@ -106,11 +99,15 @@ void show_help() {
             "\t\t3: lowercase and uppercase letters and digits\n"
             "\t\t4: lowercase and uppercase letters, digits and symbols\n";
     clog << "\t- length: the length of the password\n";
-    clog << "\t- out_file: the name of the file where passwords will be written\n";
+    clog << "\t- -s: silent mode, do not print progress information\n";
     exit(1);
 }
 
 void print_error(const string& s, int code) {
     clog << s << endl;
     exit(code);
+}
+
+bool streq(const char* s1, const char* s2) {
+    return strcmp(s1, s2) == 0;
 }
