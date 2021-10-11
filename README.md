@@ -1,11 +1,6 @@
 # Bruty
 Basic bruteforce dictionary generator written in C++, with a focus on maximum efficiency and generation speed.
 
-## Features
-- Various charsets available
-- Write to file or print to stdout
-- Show progress in real time
-
 ## Build
 Fastest way to build the project:
 1. Download the [source code zip](https://github.com/Belluxx/Bruty/archive/refs/heads/main.zip)
@@ -20,18 +15,17 @@ Fastest way to build the project:
 ## Usage
 Usage: `bruty charset length [-s]`
 - **charset**: the code of the charset that will be used to compose the passwords
-  - **Barebone** (code `0`): lowercase letters
-  - **Minimal**  (code `1`): lowercase letters and digits
-  - **Basic**    (code `2`): lowercase and uppercase letters
-  - **Normal**   (code `3`): lowercase and uppercase letters and digits
-  - **Big**      (code `4`): lowercase and uppercase letters, digits and symbols
+  - `0`: lowercase letters
+  - `1`: lowercase letters and digits
+  - `2`: lowercase and uppercase letters
+  - `3`: lowercase and uppercase letters and digits
+  - `4`: lowercase and uppercase letters, digits and symbols
 - **length**: the length of the password
 - **-s**: silent mode, do not print progress information
 
 ## Performance
 Tests performed on a Macbook Air M1
-- `bruty 0 6 > out.txt`: 12.6 seconds
-- `bruty 0 6 -f out.txt`: 20.8 seconds
+- `bruty 0 6 > out.txt`: 10.3 seconds
 - `crunch 6 6 abcdefghijklmnopqrstuvwxyz > out.txt`: 30.0 seconds
 
-So bruty appears to be around 2.4x faster than crunch (in output redirect mode).
+So bruty appears to be around 3x faster than crunch.
