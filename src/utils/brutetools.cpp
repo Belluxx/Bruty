@@ -19,8 +19,6 @@ int charset_indexes[128] = {};
  * @param charset The charset that will be used to compose passwords
  * @param charset_size The number of characters in the charset
  * @param pass_size The length of the password
- * @param fname The name of the file where the dictionary will be
- * written
  */
 void generate_dict(const char* charset, int charset_size, int pass_size) {
     generate_indexes(charset, charset_size);
